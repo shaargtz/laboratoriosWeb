@@ -1,0 +1,37 @@
+* {
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+body {
+    width: 50%;
+    border-radius: 2px;
+    border-style: dotted;
+    padding: 20px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+h1 {
+    text-align: center;
+}
+
+li {
+    margin-bottom: 25px;
+    list-style-type: square;
+}
+
+span {
+    font-weight: bold;
+}
+
+#index {
+    display: flex;
+    flex-direction: row;
+}
+
+#index li {
+    margin-right: 28%;
+    list-style-type: circle;
+}
