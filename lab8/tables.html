@@ -66,13 +66,58 @@
 
 </body>
 
+</html>
 
 <!-- BELOW CODE IS CRITICAL. IT HANDLES HOW FORM DATA IS LOADED FROM OUR SERVER -->
 <script type="text/javascript">
 
+  function getTables() {
+    $.ajax({url: "/api/tables", method: "GET"})
+      .then(function(data) {
+        const tableList = $("#tableList")
+        data.forEach(element => {
+          tableList.append(
+            $("<li class='list-group-item'>").append(
+              $("<h3>").text("Nombre: " + element.nombre),
+              $("<h3>").text("Telefono: " + element.telefono),
+              $("<h3>").text("Email: " + element.email),
+              $("<hr>")
+            )
+          )
+        });
+      })
+  }
 
+  function getWaitlist() {
+    $.ajax({url: "/api/waitlist", method: "GET"})
+      .then(function(data) {
+        const waitlist = $("#waitList")
+        data.forEach(element => {
+          waitlist.append(
+            $("<li class='list-group-item'>").append(
+              $("<h3>").text("Nombre: " + element.nombre),
+              $("<h3>").text("Telefono: " + element.telefono),
+              $("<h3>").text("Email: " + element.email),
+              $("<hr>")
+            )
+          )
+        });
+      })
+  }
 
+  function clearReserves() {
+    $.ajax({url: "/api/clear", method: "POST"})
+      .then(function(data) {
+        $("#waitList").empty();
+        $("#tableList").empty();
+      })
+    
+    window.location.reload();
+  }
+
+  $("#clear").on("click", clearReserves);
+
+  getTables()
+  getWaitlist()
 
 </script>
-
-</html>

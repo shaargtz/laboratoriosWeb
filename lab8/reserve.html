@@ -81,5 +81,36 @@
 <!-- BELOW CODE IS CRITICAL. IT HANDLES HOW FORM DATA IS SENT TO OUR SERVER -->
 <script type="text/javascript">
 
+  $(".submit").on("click", function(e) {
+    event.preventDefault();
+
+    const reservation = {
+      nombre: $("#reserve-name").val().trim(),
+      telefono: $("#reserve-phone").val().trim(),
+      email: $("#reserve-email").val().trim()
+    }
+
+    // $.ajax({
+    //   url: "/ajax-post-reserve",
+    //   method: "POST",
+    //   data: reservation,
+    //   success: function(data) {
+    //     console.log(data)
+    //   }
+    // })
+
+    $.post("/api/tables", reservation,
+      function(data) {
+        if (data) {
+          alert("Reservacion exitosa")
+        } else {     
+          alert("Te pusimos en lista de espera")
+        }
+    });
+
+    $("#reserve-name").val("");
+    $("#reserve-phone").val("");
+    $("#reserve-email").val("");
+  })
 
 </script>
