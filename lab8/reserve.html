@@ -90,23 +90,23 @@
       email: $("#reserve-email").val().trim()
     }
 
-    // $.ajax({
-    //   url: "/ajax-post-reserve",
-    //   method: "POST",
-    //   data: reservation,
-    //   success: function(data) {
-    //     console.log(data)
-    //   }
-    // })
+    $.ajax({
+      url: "/ajax-post-reserve",
+      method: "POST",
+      data: reservation,
+      success: function(data) {
+        console.log(data)
+      }
+    })
 
-    $.post("/api/tables", reservation,
-      function(data) {
-        if (data) {
-          alert("Reservacion exitosa")
-        } else {     
-          alert("Te pusimos en lista de espera")
-        }
-    });
+    // $.post("/api/tables", reservation,
+    //   function(data) {
+    //     if (data) {
+    //       alert("Reservacion exitosa")
+    //     } else {     
+    //       alert("Te pusimos en lista de espera")
+    //     }
+    // });
 
     $("#reserve-name").val("");
     $("#reserve-phone").val("");
