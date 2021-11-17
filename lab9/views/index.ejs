@@ -1,0 +1,31 @@
+<%- include ("./partials/_header") %>
+
+
+<div class="container">
+  <a href ="/newPost"><button type="button" class="btn btn-primary">Create New Post</button></a>
+</div>
+
+<main role="main" class="container">
+  <div class="row">
+    <div class="col-md-8 blog-main">
+
+      <% if (!posts.length) { %>
+        <h2 class="blog-post-title">There's no posts</h2>
+      <% } else { %>
+        <% posts.forEach(e => { %>
+
+          <div class="blog-post">
+            <h2 class="blog-post-title"><%= e.title %></h2>
+            <p class="blog-post-meta"><%= e.post_date %> by <a href="#"><%= e.author %></a>     </p>
+            <p><%= e.post_data %></p>
+            <a class = "btn btn-danger" href ="/deletePost/<%= e.id %>"> Delete </a>
+            <a class = "btn btn-info" href ="/editPost/<%= e.id %>"> Edit </a>
+          </div>
+
+        <% })} %>
+    </div>
+  </div>
+</main>
+
+
+<%- include ("./partials/_footer") %>
