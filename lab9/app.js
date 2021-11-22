@@ -2,12 +2,13 @@ const express = require('express');
 const path = require('path');
 const morgan = require('morgan');
 const mongoose = require('mongoose');
+const password = require('./credentials')
 
 const app = express();
 
 // connection to db
 
-mongoose.connect('mongodb+srv://shaar:1234@cluster0.2uafw.mongodb.net/blog?retryWrites=true&w=majority')
+mongoose.connect('mongodb+srv://shaar:' + password + '@cluster0.2uafw.mongodb.net/blog?retryWrites=true&w=majority')
     .then(db => console.log('db connected'))
     .catch(err => console.log(err));
 
